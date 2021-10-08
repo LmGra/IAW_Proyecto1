@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Autor, Ficheros, Temario, Asignatura
+
+admin.site.register(Autor)
+admin.site.register(Ficheros)
+admin.site.register(Temario)
+admin.site.register(Asignatura)
