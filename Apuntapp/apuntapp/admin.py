@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Autor, Temario, Publicacion, Modulo
+from .models import Autor, Asignatura, Publicacion, Ciclo
 
 admin.site.register(Autor)
 admin.site.register(Asignatura)
