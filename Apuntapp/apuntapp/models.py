@@ -2,18 +2,17 @@ from django.db import models
 
 
 class Autor(models.Model):
-    nomAutor = models.CharField(max_length=50)
+
     nickname = models.CharField(max_length=50, blank=False)
-    correo = models.EmailField(default="",blank=False)
 
     def __str__(self):
         return self.nickname
 
-class Asignatura(models.Model):
+class Modulo(models.Model):
 
-    CicloAsignatura = models.ForeignKey("Ciclo", on_delete=models.CASCADE, null=True)
+    ciclo = models.ForeignKey("Ciclo", on_delete=models.CASCADE, null=True)
 
-    LISTA_ASIGNATURA = [
+    LISTA_Modulo = [
         ("IAW+HLC","Implantación de Aplicaciones Web + Hora libre configuración"),
         ("SAD","Seguridad y Alta Disponibilidad"),
         ("ASGBD","Administración de Sistemas Gestores de Bases de Datos"),
@@ -46,19 +45,19 @@ class Asignatura(models.Model):
 
     ]
 
-    asignatura = models.CharField('Asignatura', max_length=64, choices=LISTA_ASIGNATURA, blank=False, default="IAW+HLC")
+    modulo = models.CharField('Modulo', max_length=64, choices=LISTA_Modulo, blank=False, default="IAW+HLC")
     tema = models.DecimalField('Tema', max_digits=2, decimal_places=0, default=1)
 
 
     def __str__(self):
-        return self.asignatura+' '+str(self.tema)
+        return self.modulo+' '+str(self.tema)
 
 class Publicacion(models.Model):
     titulo = models.CharField(max_length=50,blank=False,default="")
-    texto = models.CharField(max_length=9999,null=True,blank=True)
-    archivoFichero = models.FileField(upload_to="archivos/", null=True, blank=True)
-    subida = models.ForeignKey("Asignatura", on_delete=models.CASCADE, null=True)
-    autorpublica = models.ForeignKey("Autor", on_delete=models.CASCADE, null=True)
+    comentario = models.CharField(max_length=300,null=True,blank=True)
+    archivo = models.FileField(upload_to="archivos/", null=True, blank=True)
+    modulo = models.ForeignKey("Modulo", on_delete=models.CASCADE, null=True)
+    autor = models.ForeignKey("Autor", on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.titulo
@@ -70,12 +69,12 @@ class Ciclo(models.Model):
         ("SMR","Sistemas Microinformáticos y Redes")
     ]
 
-    nombreCiclo = models.CharField('NombreCiclo', max_length=12, choices=LISTA_Ciclo, blank=False, default="ASIR")
+    ciclo = models.CharField('Ciclo', max_length=12, choices=LISTA_Ciclo, blank=False, default="ASIR")
 
     def __str__(self):
-        return self.nombreCiclo
+        return self.ciclo
 
-#class Asignatura(models.Model):
-#    nomAsignatura = models.CharField(max_length=16)
-#class Asignatura(models.Model):
-#    nomAsignatura = models.CharField(max_length=16)
+#class Modulo(models.Model):
+#    nomModulo = models.CharField(max_length=16)
+#class Modulo(models.Model):
+#    nomModulo = models.CharField(max_length=16)
