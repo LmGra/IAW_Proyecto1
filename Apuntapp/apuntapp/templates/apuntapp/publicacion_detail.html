@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h5>{{ Publicacion.modulo }}</h5>
+
+    <h3>{{ Publicacion.titulo }}</h3>
+
+        </br>
+
+        <p>{{ Publicacion.comentario }}</p>
+
+        </br>
+        </br>
+
+        <p>Archivo almacenado : {{ Publicacion.archivo }}</p>
+
+        </br>
+        </br>
+
+        <p>Creado por : {{ Publicacion.autor }}</p>
+    
+{% endblock %}

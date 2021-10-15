@@ -5,7 +5,7 @@
 
     {% for Publicacion in object_list %}
 
-        <p>{{ Publicacion.titulo }}</p>
+        <p><a href="{% url 'publicacion-detail' Publicacion.pk %}">{{ Publicacion.titulo }}</a></p>
 
     {% endfor %}
     
