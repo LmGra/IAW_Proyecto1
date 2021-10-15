@@ -1,0 +1,13 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>Listado de modulos</h2>
+
+    {% for Modulo in object_list %}
+
+        <p>{{ Modulo.modulo }} {{ Modulo.tema }}</p>
+
+    {% endfor %}
+    
+{% endblock %}

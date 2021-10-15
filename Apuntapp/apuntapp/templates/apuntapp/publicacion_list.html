@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>Listado de publicaciones</h2>
+
+    {% for Publicacion in object_list %}
+
+        <p>{{ Publicacion.titulo }}</p>
+
+    {% endfor %}
+    
+{% endblock %}
