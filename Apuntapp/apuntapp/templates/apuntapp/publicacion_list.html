@@ -6,7 +6,14 @@
     {% for Publicacion in object_list %}
 
         <p><a href="{% url 'publicacion-detail' Publicacion.pk %}">{{ Publicacion.titulo }}</a></p>
+        <a href="{% url 'publicacion-update' Publicacion.pk %}"> Modificar publicación </a>&nbsp;&nbsp;
+        <a href="{% url 'publicacion-delete' Publicacion.pk %}"> Eliminar publicación </a>
+        
 
     {% endfor %}
     
+<p><a href="{% url 'publicacion-add' %}"> Añadir publicación </a></p>
+
+
+
 {% endblock %}

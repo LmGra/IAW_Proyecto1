@@ -17,7 +17,7 @@ from django.contrib import admin
 #from django.urls import include, path
 from django.urls import path
 
-from apuntapp.views import AutorListView, ModuloListView, PublicacionListView, CicloListView, PublicacionDetailView
+from apuntapp.views import AutorListView, ModuloListView, PublicacionListView, CicloListView, PublicacionDetailView, PublicacionCreateView, PublicacionDeleteView, PublicacionUpdateView
 
 urlpatterns = [
     #path('apuntapp/', include('apuntapp.urls')),
@@ -25,8 +25,12 @@ urlpatterns = [
     #path('')
     path('autor/',AutorListView.as_view()),
     path('modulo/',ModuloListView.as_view()),
-    path('publicacion/',PublicacionListView.as_view()),
+    path('publicacion/',PublicacionListView.as_view(), name='publicacion-list'),
     path('ciclo/',CicloListView.as_view()),
 
     path('publicacion/<int:pk>/',PublicacionDetailView.as_view(), name='publicacion-detail'),
+
+    path('publicacion/add/', PublicacionCreateView.as_view(), name='publicacion-add'),
+    path('publicacion/<int:pk>/update/', PublicacionUpdateView.as_view(), name='publicacion-update'),
+    path('publicacion/<int:pk>/delete/', PublicacionDeleteView.as_view(), name='publicacion-delete'),
 ]
